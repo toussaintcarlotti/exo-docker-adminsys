@@ -1,0 +1,8 @@
+version: '0.1'
+
+services:
+  man:
+    build: .
+    ports:
+      - "8000:80"
+    image: angulargallery:v0.1

@@ -1,0 +1,19 @@
+
+# Pull the minimal Ubuntu image
+FROM node
+
+# Install Nginx
+RUN apt-get -y update && apt-get -y install nginx
+
+RUN mkdir "/usr/share/ngximgGallery"
+COPY ngx-image-gallery/ /usr/share/ngximgGallery/preview
+
+
+# Run the Nginx server with custom conf
+# CMD ["/usr/sbin/nginx", "-c", "/usr/share/config_perso.conf;"]
+
+# Run the Nginx server
+CMD ["/usr/sbin/nginx", "-c", "/usr/share/config_perso.conf",  "-g", "daemon off;"]
+
+# Expose the port for access
+EXPOSE 80/tcp
